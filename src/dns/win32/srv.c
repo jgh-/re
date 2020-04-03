@@ -12,7 +12,7 @@
 #include <re_list.h>
 #include <re_sa.h>
 #include <re_dns.h>
-#include "../dns.h"
+#include "dns.h"
 
 
 #define DEBUG_MODULE "win32/srv"

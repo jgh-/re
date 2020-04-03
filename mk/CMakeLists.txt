@@ -71,13 +71,14 @@ if(UNIX)
 		
 		if (${MACOSX_VERSION} VERSION_LESS 10.9)
 		  foreach(FLAGS CMAKE_C_FLAGS CMAKE_CXX_FLAGS CMAKE_EXE_LINKER_FLAGS CMAKE_SHARED_LINKER_FLAGS CMAKE_MODULE_LINKER_FLAGS)
-			    set(${FLAGS} "${${FLAGS}} -mmacosx-version-min=10.6 -stdlib=libstdc++")
+			    set(${FLAGS} "${${FLAGS}}  -mmacosx-version-min=10.6 -stdlib=libstdc++")
 		  endforeach()
 		else()
 		  foreach(FLAGS CMAKE_C_FLAGS CMAKE_CXX_FLAGS CMAKE_EXE_LINKER_FLAGS CMAKE_SHARED_LINKER_FLAGS CMAKE_MODULE_LINKER_FLAGS)
 			    set(${FLAGS} "${${FLAGS}} -mmacosx-version-min=10.7 -stdlib=libc++")
 		  endforeach()
 		endif()
+		SET(PLATFORM_INCLUDES "${RE_SRC_PREFIX}/dns")
 	endif()
 
 	message("libre sources: ${RE_SRCS}")
@@ -130,7 +131,7 @@ elseif(WIN32)
 	if (NOT RE_CFLAGS MATCHES HAVE_PTHREAD)
 		LIST(REMOVE_ITEM RE_SRCS "${RE_SRC_PREFIX}/lock/lock.c")
 	endif()
-	
+	SET(PLATFORM_INCLUDES "${RE_SRC_PREFIX}/dns ${RE_SRC_PREFIX}/mod ${RE_SRC_PREFIX}/mqueue")
 	# remove files not to be comiled for win32 in any case
 	LIST(REMOVE_ITEM RE_SRCS "${RE_SRC_PREFIX}/httpauth/basic.c")
 	LIST(REMOVE_ITEM RE_SRCS "${RE_SRC_PREFIX}/mod/dl.c")
@@ -142,7 +143,7 @@ elseif(WIN32)
 	
 endif()
 
-include_directories(${RE_ROOT}/include)
+include_directories(${RE_ROOT}/include ${PLATFORM_INCLUDES})
 
 add_library(re ${RE_SRCS} ${HEADER_FILES})
 

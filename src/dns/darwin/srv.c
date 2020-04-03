@@ -9,7 +9,7 @@
 #include <re_list.h>
 #include <re_sa.h>
 #include <re_dns.h>
-#include "../dns.h"
+#include "dns.h"
 #define __CF_USE_FRAMEWORK_INCLUDES__
 #include <SystemConfiguration/SystemConfiguration.h>
 

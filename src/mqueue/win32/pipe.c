@@ -5,7 +5,7 @@
  */
 #include <winsock2.h>
 #include <re_types.h>
-#include "../mqueue.h"
+#include "mqueue.h"
 
 
 /*

@@ -250,7 +250,7 @@ ifeq ($(OS),gnu)
 	AFLAGS		:= cru
 endif
 ifeq ($(OS),darwin)
-	CFLAGS		+= -fPIC -dynamic -DDARWIN
+	CFLAGS		+= -fPIC -dynamic -DDARWIN -I$(LIBRE_PATH)/src/dns
 ifneq (,$(findstring Apple, $(CC_LONGVER)))
 	CFLAGS		+= -Wshorten-64-to-32
 endif
@@ -325,7 +325,7 @@ ifeq ($(OS),openbsd)
 	HAVE_ARC4RANDOM	:= 1
 endif
 ifeq ($(OS),win32)
-	CFLAGS		+= -DWIN32 -D_WIN32_WINNT=0x0501 -D__ssize_t_defined
+	CFLAGS		+= -DWIN32 -D_WIN32_WINNT=0x0501 -D__ssize_t_defined -I$(LIBRE_PATH)/src/dns -I$(LIBRE_PATH)/src/mod -I$(LIBRE_PATH)/src/mqueue
 	LIBS		+= -lwsock32 -lws2_32 -liphlpapi
 	LFLAGS		+=
 	SH_LFLAGS	+= -shared

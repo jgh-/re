@@ -5,7 +5,7 @@
  */
 #include <windows.h>
 #include <re_types.h>
-#include "../mod_internal.h"
+#include "mod_internal.h"
 
 
 #define DEBUG_MODULE "dll"
