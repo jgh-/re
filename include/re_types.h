@@ -15,6 +15,7 @@
  */
 
 #ifdef HAVE_INTTYPES_H
+#include <stdint.h> /* Not always included by inttypes.h */
 #include <inttypes.h>
 #else
 
